@@ -112,12 +112,6 @@ class pe_puppet::master (
     require => Package['pe-puppet-server'],
   }
 
-  # Serve up the contents of this Puppet Master's hiera.yaml
-  file { "${confdir}/hiera.yaml":
-    content => file("${::settings::confdir}/hiera.yaml", '/dev/null'),
-    require => Package['pe-puppet-server'],
-  }
-
   # CA configuration
   ini_setting { 'pe_puppet-master-ca':
     setting => 'ca',
